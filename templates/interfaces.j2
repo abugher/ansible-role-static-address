@@ -1,0 +1,15 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+
+iface lo inet loopback
+
+source-directory /etc/network/interfaces.d
+
+iface eth0 inet static
+  address               {{ ip_address }}
+  netmask               {{ netmask }}
+  gateway               {{ hostvars[gateway]['ip_address'] }}
+  dns-nameservers       {{ hostvars[dns_server]['ip_address'] }} 8.8.8.8 8.8.4.4
+  dns-search            {{ domain }}
+  dns-domain            {{ domain }}
+
+auto lo {{ network_interface }}
