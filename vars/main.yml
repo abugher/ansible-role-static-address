@@ -1,4 +1,6 @@
 ---
+dependencies:
+  - 'hostname'
 template_files:
   - owner:              'root'
     group:              'root'

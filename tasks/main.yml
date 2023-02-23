@@ -1,8 +1,8 @@
 ---
+- include:              '../tasks/dependencies.yml'
 - include:              '../tasks/template_files.yml'
 - include:              '../tasks/disable_services.yml'
 - include:              '../tasks/stop_services.yml'
 - include:              '../tasks/restart_services.yml'
   when:                 disable_services_result.changed
                         or template_files_result.changed
-
