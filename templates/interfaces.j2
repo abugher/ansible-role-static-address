@@ -8,7 +8,7 @@ iface eth0 inet static
   address               {{ ip_address }}
   netmask               {{ netmask }}
   gateway               {{ hostvars[gateway]['ip_address'] }}
-  dns-nameservers       {{ hostvars[dns_server]['ip_address'] }} 8.8.8.8 8.8.4.4
+  dns-nameservers       {% for h in groups['dns-internal'] %}{{ hostvars[h]['ip_address'] }}{% if not loop.last %}, {% endif %}{% endfor %}
   dns-search            {{ domain }}
   dns-domain            {{ domain }}
 
